@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Quotes</title>
+  <!-- Vardana Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Varela Round', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+    .quote-container {
+      background: white;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+    }
+    .quote-text {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .pagination button {
+      background: #6c63ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .pagination button:hover {
+      background: #4b42c3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quote-container">
+  <div class="quote-text" id="quote">Loading...</div>
+  <div class="pagination">
+    <button id="prev">&laquo; Previous</button>
+    <button id="next">Next &raquo;</button>
+  </div>
+</div>
+
+<script>
+  const quotes = [
+    "“It is our choices, Harry, that show what we truly are, far more than our abilities.” – J.K. Rowling",
+    "“Not all those who wander are lost.” – J.R.R. Tolkien",
+    "“To be, or not to be, that is the question.” – William Shakespeare",
+    "“All we have to decide is what to do with the time that is given us.” – J.R.R. Tolkien",
+    "“It does not do to dwell on dreams and forget to live.” – J.K. Rowling",
+    "“The only way to do great work is to love what you do.” – Steve Jobs",
+    "“So many things are possible just as long as you don't know they're impossible.” – Norton Juster",
+    "“I am no bird; and no net ensnares me.” – Charlotte Brontë",
+    "“There is some good in this world, and it’s worth fighting for.” – J.R.R. Tolkien",
+    "“We accept the love we think we deserve.” – Stephen Chbosky",
+    "“It matters not what someone is born, but what they grow to be.” – J.K. Rowling",
+    "“It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.” – Jane Austen",
+    "“Fear doesn’t shut you down; it wakes you up.” – Veronica Roth",
+    "“We are all fools in love.” – Jane Austen",
+    "“The world breaks everyone, and afterward, some are strong at the broken places.” – Ernest Hemingway",
+    "“Happiness can be found even in the darkest of times, if one only remembers to turn on the light.” – J.K. Rowling",
+    "“Whatever our souls are made of, his and mine are the same.” – Emily Brontë",
+    "“It is never too late to be what you might have been.” – George Eliot",
+    "“You never really understand a person until you consider things from his point of view.” – Harper Lee",
+    "“Stay hungry, stay foolish.” – Steve Jobs",
+    "“If you only read the books that everyone else is reading, you can only think what everyone else is thinking.” – Haruki Murakami",
+    "“There is no greater agony than bearing an untold story inside you.” – Maya Angelou",
+    "“You cannot swim for new horizons until you have courage to lose sight of the shore.” – William Faulkner",
+    "“The ones that love us never really leave us.” – J.K. Rowling",
+    "“A reader lives a thousand lives before he dies.” – George R.R. Martin",
+    "“We are all in the gutter, but some of us are looking at the stars.” – Oscar Wilde",
+    "“Do what you can, with what you have, where you are.” – Theodore Roosevelt",
+    "“Time you enjoy wasting is not wasted time.” – Marthe Troly-Curtin",
+    "“Life appears to me too short to be spent in nursing animosity or registering wrongs.” – Charlotte Brontë",
+    "“The only thing necessary for the triumph of evil is for good men to do nothing.” – Edmund Burke",
+    "“We must all face the choice between what is right and what is easy.” – J.K. Rowling",
+    "“You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.” – Dr. Seuss"
+  ];
+
+  let currentIndex = 0;
+
+  const quoteEl = document.getElementById('quote');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+
+  function showQuote(index) {
+    quoteEl.textContent = quotes[index];
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + quotes.length) % quotes.length;
+    showQuote(currentIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % quotes.length;
+    showQuote(currentIndex);
+  });
+
+  // Initialize
+  showQuote(currentIndex);
+</script>
+
+</body>
+</html>
